@@ -67,7 +67,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("BRONCE");
 
-        NombrePais.setText("jTextField1");
+        NombrePais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombrePaisActionPerformed(evt);
+            }
+        });
 
         MedallasOro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,11 +79,18 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        MedallasBronce.setText("jTextField3");
+        MedallasBronce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MedallasBronceActionPerformed(evt);
+            }
+        });
 
+        Agregar.setBackground(new java.awt.Color(255, 204, 102));
         Agregar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         Agregar.setText("Agregar");
 
+        Modificar.setBackground(new java.awt.Color(255, 204, 102));
+        Modificar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         Modificar.setText("Modificar");
         Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +98,8 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        Eliminar.setBackground(new java.awt.Color(255, 204, 102));
+        Eliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         Eliminar.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -102,8 +115,9 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(MedallasBronce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(72, 72, 72))
+                            .addComponent(MedallasBronce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Eliminar))
+                        .addGap(55, 55, 55))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -128,9 +142,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                         .addGap(9, 9, 9)
                                         .addComponent(jLabel4))
                                     .addComponent(Modificar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                                .addComponent(Eliminar)
-                                .addGap(70, 70, 70))
+                                .addGap(70, 183, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(MedallasPlata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
@@ -246,6 +258,14 @@ public class NewJFrame extends javax.swing.JFrame {
     private void MedallasOroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedallasOroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MedallasOroActionPerformed
+
+    private void MedallasBronceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedallasBronceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MedallasBronceActionPerformed
+
+    private void NombrePaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombrePaisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombrePaisActionPerformed
 
     /**
      * @param args the command line arguments
