@@ -4,17 +4,24 @@
  */
 package proyecto.panamericanos;
 
-/**
- *
- * @author maste
- */
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.DriverManager;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 public class NewJFrame extends javax.swing.JFrame {
-
-    /**
-     * Creates new form NewJFrame
-     */
+    Conexion con = new Conexion("juegos_panamericanos");
+    Connection cn;
+    Statement st;
+    ResultSet rs;
+    DefaultTableModel modelo;
+    String titulos[] = {"pais","medallas_oro","medallas_plata","medallas_bronce","TOTAL"};//tendremos que cambiarlo a pais,oro,okata,bronse, y no tengo idea de como pondremos la bandera
+    String medallas[] = new String[5]; //creo que aqui tendre que poner 6 por los valores de la tabla de de las medallas y cambiar el nombre de persona a pais
+    
     public NewJFrame() {
         initComponents();
+        Listar();
     }
 
     /**
@@ -42,7 +49,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaDatos = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -137,15 +144,11 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addComponent(jLabel4))
-                                    .addComponent(Modificar))
-                                .addGap(70, 183, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(MedallasPlata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel4))
+                            .addComponent(Modificar)
+                            .addComponent(MedallasPlata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,18 +179,15 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaDatos);
 
         jTabbedPane1.addTab("Lista medallas", jScrollPane1);
 
@@ -229,7 +229,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -301,7 +301,36 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    void Listar(){
+        String sql = "Select * from medallas";//en el ejemplo la tabla se llama persona se tiene que cambiar a la nuestra
+        try{
+            cn = con.getConnection();
+            if (cn != null){
+                System.out.println("se conecto a la BD");
+            }
+            st = cn.createStatement();
+            rs = st.executeQuery(sql);
+            modelo = new DefaultTableModel(null,titulos);
+            while (rs.next()){//tenemos que cambiar la persona y las otras cosas por pais, oro, plata, bronce
+                medallas[0] = rs.getString("pais");
+                medallas[1] = rs.getString("medallas_oro");
+                medallas[2] = rs.getString("medallas_plata");
+                medallas[3] = rs.getString("medallas_bronce");
+                medallas[4] = rs.getString("TOTAL");
+                modelo.addRow(medallas);
+            }
+            TablaDatos.setModel(modelo); //el ci es del id Cr es del rut y Cn es del nombre tenemos que cambiarlo
+            TableColumn cpa = TablaDatos.getColumn("pais");
+            cpa.setMaxWidth(30);
+            TableColumn cmo = TablaDatos.getColumn("medalla_oro");
+            TableColumn cmp = TablaDatos.getColumn("medalla_plata");
+            TableColumn cmb = TablaDatos.getColumn("medalla_bronce");
+            TableColumn ct = TablaDatos.getColumn("TOTAL");
+            con.desconectar();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Agregar;
     private javax.swing.JButton Eliminar;
@@ -310,6 +339,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField MedallasPlata;
     private javax.swing.JButton Modificar;
     private javax.swing.JTextField NombrePais;
+    private javax.swing.JTable TablaDatos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -321,7 +351,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
