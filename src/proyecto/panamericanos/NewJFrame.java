@@ -265,6 +265,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void ModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseClicked
         // TODO add your handling code here:
         modificar();
+        ordenar();
         Listar();
     }//GEN-LAST:event_ModificarMouseClicked
 
@@ -302,37 +303,42 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
     }
-    void Listar(){
-        String sql = "Select * from medallas";//en el ejemplo la tabla se llama persona se tiene que cambiar a la nuestra
-        try{
-            cn = con.getConnection();
-            if (cn != null){
-                System.out.println("se conecto a la BD");
-            }
-            st = cn.createStatement();
-            rs = st.executeQuery(sql);
-            modelo = new DefaultTableModel(null,titulos);
-            while (rs.next()){//tenemos que cambiar la persona y las otras cosas por pais, oro, plata, bronce
-                medallas[0] = rs.getString("pais");
-                medallas[1] = rs.getString("medallas_oro");
-                medallas[2] = rs.getString("medallas_plata");
-                medallas[3] = rs.getString("medallas_bronce");
-                medallas[4] = rs.getString("TOTAL");
-                modelo.addRow(medallas);
-            }
-            TablaDatos.setModel(modelo); //el ci es del id Cr es del rut y Cn es del nombre tenemos que cambiarlo
-            TableColumn cpa = TablaDatos.getColumn("pais");
-            cpa.setMaxWidth(30);
-            TableColumn cmo = TablaDatos.getColumn("medalla_oro");
-            TableColumn cmp = TablaDatos.getColumn("medalla_plata");
-            TableColumn cmb = TablaDatos.getColumn("medalla_bronce");
-            TableColumn ct = TablaDatos.getColumn("TOTAL");
-            con.desconectar();
-        }catch(Exception e){
-            System.out.println(e);
-        }
-    }
     
+    void Listar(){
+    String sql = "SELECT pais, medallas_oro, medallas_plata, medallas_bronce, (medallas_oro + medallas_plata + medallas_bronce) as TOTAL FROM medallas ORDER BY medallas_oro DESC, medallas_plata DESC, medallas_bronce DESC";
+    try{
+        cn = con.getConnection();
+        if (cn != null){
+            System.out.println("se conecto a la BD");
+        }
+        st = cn.createStatement();
+        rs = st.executeQuery(sql);
+        modelo = new DefaultTableModel(null,titulos);
+        while (rs.next()){
+            medallas[0] = rs.getString("pais");
+            medallas[1] = rs.getString("medallas_oro");
+            medallas[2] = rs.getString("medallas_plata");
+            medallas[3] = rs.getString("medallas_bronce");
+            medallas[4] = rs.getString("TOTAL");
+            modelo.addRow(medallas);
+        }
+        TablaDatos.setModel(modelo);
+        TableColumn cpa = TablaDatos.getColumn("pais");
+        cpa.setMaxWidth(200);
+        TableColumn cmo = TablaDatos.getColumn("medalla_oro");
+        TableColumn cmp = TablaDatos.getColumn("medalla_plata");
+        TableColumn cmb = TablaDatos.getColumn("medalla_bronce");
+        TableColumn ct = TablaDatos.getColumn("TOTAL");
+        con.desconectar();
+    }catch(Exception e){
+        System.out.println(e);
+    }
+}
+    
+    void ordenar(){
+    String sql = "SELECT * FROM tabla ORDER BY medallas_oro DESC, medallas_plata DESC, medallas_bronce DESC";
+    
+    }
     /*void agregar(){       cambiar a no se algo pero no a esto
         String pa = NombrePais.getText();
         String medor = MedallasOro.getText();
