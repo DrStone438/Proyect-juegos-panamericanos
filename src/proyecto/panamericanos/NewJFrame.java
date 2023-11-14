@@ -48,6 +48,7 @@ public class NewJFrame extends javax.swing.JFrame {
         Modificar = new javax.swing.JButton();
         Eliminar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaDatos = new javax.swing.JTable();
@@ -71,6 +72,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("BRONCE");
 
+        NombrePais.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NombrePaisMouseClicked(evt);
+            }
+        });
         NombrePais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombrePaisActionPerformed(evt);
@@ -115,8 +121,15 @@ public class NewJFrame extends javax.swing.JFrame {
         Eliminar.setBackground(new java.awt.Color(255, 204, 102));
         Eliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         Eliminar.setText("Eliminar");
+        Eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EliminarMouseClicked(evt);
+            }
+        });
 
         jLabel6.setText("Futuras banderas");
+
+        jLabel7.setText("jLabel7");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,43 +137,43 @@ public class NewJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NombrePais, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Agregar)
-                                .addComponent(MedallasOro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel3)))
-                        .addGap(60, 60, 60)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel4)
-                                .addGap(117, 117, 117)
-                                .addComponent(jLabel5))
+                            .addComponent(jLabel2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(MedallasPlata, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Modificar))
-                                .addGap(84, 84, 84)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Eliminar)
-                                    .addComponent(MedallasBronce, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(120, 120, 120))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Agregar)
+                                        .addComponent(MedallasOro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(23, 23, 23)
+                                        .addComponent(jLabel3)))
+                                .addGap(60, 60, 60)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(MedallasPlata, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Modificar))
+                                        .addGap(84, 84, 84)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(Eliminar)
+                                            .addComponent(MedallasBronce, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(jLabel4)
+                                        .addGap(117, 117, 117)
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                                        .addComponent(jLabel7)))))
+                        .addGap(133, 133, 133))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NombrePais, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGap(104, 104, 104))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,22 +181,26 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(NombrePais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NombrePais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MedallasOro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MedallasPlata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MedallasBronce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Agregar)
                     .addComponent(Modificar)
@@ -192,6 +209,12 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane1MouseClicked(evt);
+            }
+        });
 
         TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,7 +231,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -258,16 +281,43 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void AgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgregarMouseClicked
         // TODO add your handling code here:
-        //agregar();
-        //listar();
+        agregar();
+        Listar();
     }//GEN-LAST:event_AgregarMouseClicked
 
     private void ModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseClicked
         // TODO add your handling code here:
         modificar();
-        ordenar();
         Listar();
     }//GEN-LAST:event_ModificarMouseClicked
+
+    private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        int cmo,cmp,cmb,fila = TablaDatos.getSelectedRow();
+        if (fila ==-1){
+            JOptionPane.showMessageDialog(null, "Pais no Seleccionado");
+        }else{
+            String cpa=(String)TablaDatos.getValueAt(fila,0);
+            cmo = Integer.parseInt((String)TablaDatos.getValueAt(fila, 1).toString());
+            cmp = Integer.parseInt((String)TablaDatos.getValueAt(fila, 2).toString());
+            cmb = Integer.parseInt((String)TablaDatos.getValueAt(fila, 3).toString());
+            NombrePais.setText(cpa);
+            MedallasOro.setText(""+cmo);
+            MedallasPlata.setText(""+cmp);
+            MedallasBronce.setText(""+cmb); 
+        }
+    }//GEN-LAST:event_jScrollPane1MouseClicked
+
+    private void NombrePaisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NombrePaisMouseClicked
+
+    }//GEN-LAST:event_NombrePaisMouseClicked
+
+    private void EliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarMouseClicked
+        // TODO add your handling code here:
+        eliminar();
+        Listar();
+    }//GEN-LAST:event_EliminarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -335,10 +385,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 }
     
-    void ordenar(){
-    String sql = "SELECT * FROM tabla ORDER BY medallas_oro DESC, medallas_plata DESC, medallas_bronce DESC";
-    
-    }
+
     /*void agregar(){       cambiar a no se algo pero no a esto
         String pa = NombrePais.getText();
         String medor = MedallasOro.getText();
@@ -353,6 +400,49 @@ public class NewJFrame extends javax.swing.JFrame {
     /*void eliminar(){
         
     }*/
+    
+    void agregar(){
+    String pa = NombrePais.getText();
+    int medor = Integer.parseInt(MedallasOro.getText());
+    int medpl = Integer.parseInt(MedallasPlata.getText());
+    int medbr = Integer.parseInt(MedallasBronce.getText());
+    String sql = "UPDATE medallas SET medallas_oro = medallas_oro + '"+medor+"', medallas_plata = medallas_plata + '"+medpl+"', medallas_bronce = medallas_bronce + '"+medbr+"' WHERE pais = '"+pa+"'";
+
+    if (NombrePais.equals("")){
+        JOptionPane.showMessageDialog(null, "Falta escribir el pais");
+    }else{
+        try{
+            cn= con.getConnection();
+            st=cn.createStatement();
+            st.executeUpdate(sql);
+            
+            JOptionPane.showMessageDialog(null, "Usuario Actualizado");
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+}
+    void eliminar(){
+    String pa = NombrePais.getText();
+    int medor = Integer.parseInt(MedallasOro.getText());
+    int medpl = Integer.parseInt(MedallasPlata.getText());
+    int medbr = Integer.parseInt(MedallasBronce.getText());
+    String sql = "UPDATE medallas SET medallas_oro = medallas_oro - '"+medor+"', medallas_plata = medallas_plata - '"+medpl+"', medallas_bronce = medallas_bronce - '"+medbr+"' WHERE pais = '"+pa+"'";
+
+    if (NombrePais.equals("")){
+        JOptionPane.showMessageDialog(null, "Falta escribir el pais");
+    }else{
+        try{
+            cn= con.getConnection();
+            st=cn.createStatement();
+            st.executeUpdate(sql);
+            
+            JOptionPane.showMessageDialog(null, "Usuario Actualizado");
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+}
     
     void modificar(){
         String pa = NombrePais.getText();
@@ -390,6 +480,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

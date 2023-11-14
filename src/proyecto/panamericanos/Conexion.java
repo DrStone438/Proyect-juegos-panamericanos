@@ -11,7 +11,7 @@ public class Conexion {
     String url = "jdbc:mysql://localhost:3306"; //aqui estara la direccion URL
     String user = "root"; //aqui es una variable de momento es usuario
     String password = "";//contraseña
-    String driver = "com.mysql.cj.jdbc.driver";
+    String driver = "com.mysql.cj.jdbc.Driver";
     Connection con;
     
     //aqui empieza el constructor
@@ -19,14 +19,14 @@ public class Conexion {
         this.bd = bd;
         try{
             Class.forName(driver);
-            con=DriverManager.getConnection(url+bd,user,password);
+            con=DriverManager.getConnection(url+"/"+this.bd,user,password);
             System.out.println("se conecto a la BD");
         }catch(Exception ex){
             System.out.println("no se conecto a la BD");
             System.out.println(ex);
         }
     }
-    Connection getConnection(){
+    public Connection getConnection(){
         return con;
     }
     void desconectar(){
