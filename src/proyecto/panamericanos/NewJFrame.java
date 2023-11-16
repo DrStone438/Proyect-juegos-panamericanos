@@ -88,10 +88,10 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        Primero = new javax.swing.JTextField();
-        Segundo = new javax.swing.JTextField();
-        Tercero = new javax.swing.JTextField();
         Actualizar = new javax.swing.JButton();
+        Primero = new javax.swing.JLabel();
+        Segundo = new javax.swing.JLabel();
+        Tercero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -499,18 +499,18 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel21.setText("3.");
 
-        Primero.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
-        Segundo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
-        Tercero.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
         Actualizar.setText("Actualizar");
         Actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ActualizarMouseClicked(evt);
             }
         });
+
+        Primero.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        Segundo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        Tercero.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -520,20 +520,24 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(146, 146, 146)
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(Actualizar))
+                        .addComponent(jLabel18))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel21))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Primero, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                            .addComponent(Segundo)
-                            .addComponent(Tercero))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Tercero))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Primero))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Segundo)))))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(Actualizar)
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -543,19 +547,19 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(Actualizar))
-                .addGap(33, 33, 33)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(Primero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Primero))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(Segundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Segundo))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(Tercero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(Tercero))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Ganadores", jPanel3);
@@ -821,12 +825,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField Nota7;
     private javax.swing.JTextField Nota8;
     private javax.swing.JTextField Pais;
-    private javax.swing.JTextField Primero;
-    private javax.swing.JTextField Segundo;
+    private javax.swing.JLabel Primero;
+    private javax.swing.JLabel Segundo;
     private javax.swing.JTable TablaDatos;
     private javax.swing.JTable TablaNotas;
     private javax.swing.JTable TablaVueltas;
-    private javax.swing.JTextField Tercero;
+    private javax.swing.JLabel Tercero;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
